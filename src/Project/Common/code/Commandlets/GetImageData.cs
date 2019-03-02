@@ -1,4 +1,5 @@
 ﻿using Cognifide.PowerShell.Commandlets;
+using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,13 @@ namespace Common.Web.Commandlets
         [ValidateNotNullOrEmpty]
         public string DataPath { get; set; }
 
+        [Parameter(ValueFromPipeline = true, ValueFromPipelineByPropertyName = true)]
+        public Item Item { get; set; }
+
         protected override void ProcessRecord()
         {
             Log.Info(DataPath, this);
+            Log.Info(Item.Paths.Path, this);
             base.ProcessRecord();
         }
     }
