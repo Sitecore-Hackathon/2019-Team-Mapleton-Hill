@@ -1,11 +1,9 @@
 ﻿using Cognifide.PowerShell.Commandlets;
+using Common.Web.Providers;
+using Common.Web.Services;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management.Automation;
-using System.Web;
 
 namespace Common.Web.Commandlets
 {
@@ -22,6 +20,17 @@ namespace Common.Web.Commandlets
 
         protected override void ProcessRecord()
         {
+            if(!Item.Paths.IsMediaItem)
+            {
+                throw new PSInvalidOperationException("Bulk Image Upload can only be run on media items");
+            }
+
+            var provider = new CsvMediaProvider();
+            var bulkProvider = new BulkMediaProviderBase();
+            var sitecoreMediaService = new SitecoreMediaService();
+            var mediaService = new BulkMediaUploadService(provider, bulkProvider, sitecoreMediaService);
+            mediaService.Upload(Item.Paths.Path, DataPath);
+
             Log.Info(DataPath, this);
             Log.Info(Item.Paths.Path, this);
             base.ProcessRecord();
