@@ -13,6 +13,6 @@ namespace Common.Web.Services
     {
      //   bool UploadMediaItem(Stream stream, string fileName, string path, string mediaItemName);
 
-        bool Upload(Item originItem, List<IMedia> list);
+        bool Upload(string itemPath, List<IMedia> list);
     }
 }

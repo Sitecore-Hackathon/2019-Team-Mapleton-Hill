@@ -7,7 +7,7 @@ using Common.Web.Factories;
 
 namespace Common.Web.Providers
 {
-    public class BulkMediaProviderBase
+    public class BulkMediaProviderBase : IBulkMediaProvider
     {
         public List<IMedia> GetMediaList(List<ICsvMedia> sourceList)
         {

@@ -7,8 +7,8 @@ using Sitecore.Data.Items;
 
 namespace Common.Web.Services
 {
-    interface IBuilkMediaUploadService
+    interface IBulkMediaUploadService
     {
-        bool Upload(Item item, string csvFilePath);
+        bool Upload(string  itemPath, string csvFilePath);
     }
 }

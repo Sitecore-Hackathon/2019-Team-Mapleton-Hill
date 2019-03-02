@@ -15,7 +15,7 @@ namespace Common.Web.Providers
         private const string _WebType = "Web";
         private const string _FileSystemType = "FileSystem";
 
-        public CsvMediaProvider(string fileLocation)
+        public CsvMediaProvider()
         {
          //   _reader = File.Open(fileLocation);
         }

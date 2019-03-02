@@ -14,12 +14,12 @@ namespace Common.Web.Services
     {
         private readonly string masterDb = "master";
 
-        public bool Upload(Item item, List<IMedia> mediaList)
+        public bool Upload(string itemPath, List<IMedia> mediaList)
         {
             int count = 0;
             foreach (var mlItem in mediaList)
             {
-                if (UploadMediaItem(mlItem.Image, mlItem.FileName, item.Paths.Path, mlItem.Name))
+                if (UploadMediaItem(mlItem.Image, mlItem.FileName, itemPath, mlItem.Name))
                 {
                     count++;
                 }
@@ -35,6 +35,18 @@ namespace Common.Web.Services
 
         private bool UploadMediaItem(Stream stream, string fileName, string path, string mediaItemName)
         {
+            if (string.IsNullOrWhiteSpace(fileName) || string.IsNullOrWhiteSpace(path) || string.IsNullOrWhiteSpace(mediaItemName))
+            {
+                Sitecore.Diagnostics.Log.Error($"Could not upload media item either filename, path or mediaitemname is null.", this);
+                return false;
+            }
+
+            if (stream == Stream.Null)
+            {
+                Sitecore.Diagnostics.Log.Error($"Could not upload stream is null for media item {mediaItemName}.", this);
+                return false;
+            }
+            
             string destination = $"{path}/{mediaItemName}";
 
             try

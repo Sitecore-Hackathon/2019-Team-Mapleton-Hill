@@ -7,7 +7,7 @@ using Common.Web.Providers;
 
 namespace Common.Web.Services
 {
-    public class BulkMediaUploadService : IBuilkMediaUploadService
+    public class BulkMediaUploadService : IBulkMediaUploadService
     {
         private readonly ICsvMediaProvider _csvMediaProvider;
         private readonly IBulkMediaProvider _bulkMediaProvider;
@@ -20,7 +20,7 @@ namespace Common.Web.Services
             _sitecoreMediaService = sitecoreMediaService;
         }
 
-        public bool Upload(Item item, string csvFilePath)
+        public bool Upload(string itemPath, string csvFilePath)
         {
             bool result = false;
             var csvMediaList = _csvMediaProvider.GetMediaList(csvFilePath);
@@ -35,7 +35,7 @@ namespace Common.Web.Services
                return false;
            }
 
-           result = _sitecoreMediaService.Upload(item, iMediaList);
+           result = _sitecoreMediaService.Upload(itemPath, iMediaList);
 
             return result;
         }

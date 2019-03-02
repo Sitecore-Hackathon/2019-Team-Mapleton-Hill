@@ -157,7 +157,7 @@
     <Compile Include="Providers\ICsvMediaProvider.cs" />
     <Compile Include="Services\BulkMediaUploadService.cs" />
     <Compile Include="Services\FileImageService.cs" />
-    <Compile Include="Services\IBuilkMediaUploadService.cs" />
+    <Compile Include="Services\IBulkMediaUploadService.cs" />
     <Compile Include="Services\ISitecoreMediaService.cs" />
     <Compile Include="Services\IImageService.cs" />
     <Compile Include="Services\SitecoreMediaService.cs" />
