@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Common.Web.Models
 {
-    public interface IMedia
+    public interface ICsvMedia
     {
-        string Name { get; set; }
+        string FileLocation { get; set; }
+
         string FileName { get; set; }
-        Stream Image { get; set; }
+
+        string ItemName { get; set; }
+
+        ResourceType Type { get; set; }
     }
 }

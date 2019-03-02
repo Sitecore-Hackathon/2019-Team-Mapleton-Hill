@@ -9,7 +9,7 @@ namespace Common.Web.Factories
 {
     public static class MediaFactory
     {
-        public static IMedia Build(string path, string name, ResourceType resourceType)
+        public static IMedia Build(string path, string fileName, string name, ResourceType resourceType)
         {
             IMedia media = new NullMedia();
             IImageService imageService;
@@ -21,7 +21,7 @@ namespace Common.Web.Factories
                     media = new SimpleMedia()
                     {
                         Name = name,
-                        Source = resourceType,
+                        FileName = fileName,
                         Image = imageService.GetImage(path)
                     };
                     break;
@@ -30,7 +30,7 @@ namespace Common.Web.Factories
                     media = new SimpleMedia()
                     {
                         Name = name,
-                        Source = resourceType,
+                        FileName = fileName,
                         Image = imageService.GetImage(path)
                     };
                     break;

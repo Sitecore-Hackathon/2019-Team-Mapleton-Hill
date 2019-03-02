@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace Common.Web.Providers
 {
-    public interface ICvsMediaProvider
+    public interface ICsvMediaProvider
     {
-        IEnumerable<T> GetMediaList<T>() where T : IMedia;
+        List<ICsvMedia> GetMediaList(string fileLocation);
         ResourceType DetermineResourceType(string source);
     }
 }
