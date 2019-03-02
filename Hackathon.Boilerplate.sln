@@ -54,6 +54,7 @@ Global
 		{6F6819FE-571D-4FAB-8FE2-F860F0EFAF8B} = {E03017DA-8946-4D5F-A3A6-97A00E2F0002}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Caching.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.ServiceBus.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.TransientFaultHandling.Configuration.6.0.1304.0\lib\NET45
 		SolutionGuid = {311DA37D-528B-43B2-A99B-E7253F841D46}
 	EndGlobalSection
 EndGlobal
