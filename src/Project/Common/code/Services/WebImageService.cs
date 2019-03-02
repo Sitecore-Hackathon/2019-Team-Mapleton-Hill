@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Web.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,26 +17,29 @@ namespace Common.Web.Services
             _webStream.Dispose();
         }
 
+        public Func<string, HttpWebRequest> WebImageRequest = (webUrl) => { return (HttpWebRequest)WebRequest.Create(webUrl); };
+
         public Stream GetImage(string path)
         {
+            Stream media = Stream.Null;
             Uri imageUri;
             if (!Uri.TryCreate(path, UriKind.Absolute, out imageUri))
             {
                 Sitecore.Diagnostics.Log.Error($"Could not download image {path} because it is not a valid web address", this);
-                return _webStream;
+                return Stream.Null;
             }
 
             try
             {
-                WebRequest request = WebRequest.Create(path);
-                return request.GetResponse().GetResponseStream();
+                WebRequest request = WebImageRequest.Invoke(path);
+                media = request.GetResponse().GetResponseStream();
             }
             catch (WebException ex)
             {
                 Sitecore.Diagnostics.Log.Error($"Could not download image {path}", ex, this);
             }
 
-            return _webStream;
+            return media;
         }
     }
 }
