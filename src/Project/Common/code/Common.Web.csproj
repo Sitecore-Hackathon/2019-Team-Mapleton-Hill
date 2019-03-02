@@ -143,6 +143,8 @@
   <ItemGroup>
     <Compile Include="Commandlets\GetImageData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IWebImageService.cs" />
+    <Compile Include="Services\WebImageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
