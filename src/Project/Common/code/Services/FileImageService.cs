@@ -12,8 +12,17 @@ namespace Common.Web.Services
         public Stream GetImage(string path)
         {
             Stream imageStream = Stream.Null;
+            FileInfo info;
+            try
+            {
+                info = new FileInfo(path);
+            }
+            catch (NotSupportedException ex)
+            {
+                Sitecore.Diagnostics.Log.Error($"Expected a file path but found {path}", ex, this);
+                return Stream.Null;
+            }
 
-            FileInfo info = new FileInfo(path);
             if(!info.Exists)
             {
                 Sitecore.Diagnostics.Log.Error($"Could not find image {path}", this);

@@ -25,23 +25,21 @@ namespace Common.Web.Tests.Services
         {
             //arrange
             string webUrl = "https://pbs.twimg.com/media/D0m_OxuVYAAoHay.jpg";
+            
+            WebClient client = new WebClient();
+            var data = client.DownloadData(webUrl);
+            Stream expectedStream = new MemoryStream(data);
 
-            WebRequest request = WebRequest.Create(webUrl);
-            Stream expectedStream = request.GetResponse().GetResponseStream();
-
-            HttpWebResponse responseSub = Substitute.For<HttpWebResponse>();
-            responseSub.GetResponseStream().Returns(expectedStream);
-            HttpWebRequest webRequestSub = Substitute.For<HttpWebRequest>();
-            webRequestSub.GetResponse().Returns(x => responseSub);
+            WebClient clientSub = Substitute.For<WebClient>();
 
             //act
             WebImageService sut = new WebImageService();
-            sut.WebImageRequest = (string url) => { return webRequestSub; };
+            sut.WebImageRequest = () => { return new WebClient(); };
 
             Stream actualStream = sut.GetImage(webUrl);
 
             //assert
-            Assert.Equal(actualStream, expectedStream);
+            Assert.Equal(actualStream.Length, expectedStream.Length);
         }
     }
 }

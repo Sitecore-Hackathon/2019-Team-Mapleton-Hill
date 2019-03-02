@@ -17,7 +17,7 @@ namespace Common.Web.Services
             _webStream.Dispose();
         }
 
-        public Func<string, HttpWebRequest> WebImageRequest = (webUrl) => { return (HttpWebRequest)WebRequest.Create(webUrl); };
+        public Func<WebClient> WebImageRequest = () => { return new WebClient(); };
 
         public Stream GetImage(string path)
         {
@@ -31,8 +31,9 @@ namespace Common.Web.Services
 
             try
             {
-                WebRequest request = WebImageRequest.Invoke(path);
-                media = request.GetResponse().GetResponseStream();
+                WebClient client = WebImageRequest.Invoke();
+                byte[] data = client.DownloadData(path);
+                media = new MemoryStream(data);
             }
             catch (WebException ex)
             {
