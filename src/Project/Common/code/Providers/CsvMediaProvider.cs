@@ -1,36 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO;
-using System.Linq;
-using System.Web;
-using Common.Web.Models;
+﻿using Common.Web.Models;
 using Microsoft.VisualBasic.FileIO;
+using System.Collections.Generic;
 
 namespace Common.Web.Providers
 {
-    public class CsvMediaProvider : ICsvMediaProvider, IDisposable
+    public class CsvMediaProvider : ICsvMediaProvider
     {
-     //   private Stream _reader;
-        private const string _WebType = "Web";
-        private const string _FileSystemType = "FileSystem";
-
-        public CsvMediaProvider()
-        {
-         //   _reader = File.Open(fileLocation);
-        }
-
-        public void Dispose()
-        {
-          //  _reader.Dispose();
-        }
-
-        public List<ICsvMedia> GetMediaList(string fileLocation)
+        /// <summary>
+        /// Parse Csv file to get image data to be uploaded
+        /// </summary>
+        /// <param name="fileLocation"></param>
+        /// <returns></returns>
+        public List<ICsvMedia> ParseFile(string fileLocation)
         {
             List<ICsvMedia> result = null;
             using (TextFieldParser parser = new TextFieldParser(fileLocation))
             {
-            //    List<string> headers = new List<string>(); 
                 result = new List<ICsvMedia>();
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
@@ -41,10 +26,7 @@ namespace Common.Web.Providers
                     string[] fields = parser.ReadFields();
                     if (isFirstRow)
                     {
-                        //foreach (string field in fields)
-                        //{
-                        //    headers.Add(field);
-                        //}
+                        //Ignore head row
                         isFirstRow = false;
                     }
                     else
@@ -54,21 +36,20 @@ namespace Common.Web.Providers
 
                         foreach (string field in fields)
                         {
-                            if (i == 0)
+                            //First column: File Location
+                            if (i == 0) 
                             {
                                 media.FileLocation = field;
                             }
-                            else if (i == 1)
+                            //Second column: File name
+                            else if (i == 1) 
                             {
                                 media.FileName = field;
                             }
+                            //Third column: Media Item name 
                             else if (i == 2)
                             {
                                 media.ItemName = field;
-                            }
-                            else if (i == 3)
-                            {
-                                media.Type = DetermineResourceType(field);
                             }
 
                             i++;
@@ -78,25 +59,6 @@ namespace Common.Web.Providers
                 }
             }
             return result;
-        }
-
-        public ResourceType DetermineResourceType(string source)
-        {
-            switch (source)
-            {
-                case _WebType:
-                {
-                    return ResourceType.Web;
-                }
-                case _FileSystemType:
-                {
-                    return ResourceType.FileSystem;
-                }
-                default:
-                {
-                    return ResourceType.FileSystem;
-                }
-            }
         }
     }
 }

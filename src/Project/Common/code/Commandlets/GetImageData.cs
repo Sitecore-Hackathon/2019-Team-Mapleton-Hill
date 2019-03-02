@@ -26,7 +26,7 @@ namespace Common.Web.Commandlets
             }
 
             var provider = new CsvMediaProvider();
-            var bulkProvider = new BulkMediaProviderBase();
+            var bulkProvider = new BulkMediaProvider();
             var sitecoreMediaService = new SitecoreMediaService();
             var mediaService = new BulkMediaUploadService(provider, bulkProvider, sitecoreMediaService);
             mediaService.Upload(Item.Paths.Path, DataPath);

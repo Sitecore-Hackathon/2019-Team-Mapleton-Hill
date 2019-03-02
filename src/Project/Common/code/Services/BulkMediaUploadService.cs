@@ -1,12 +1,10 @@
-﻿using Sitecore.Data.Items;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Common.Web.Providers;
+﻿using Common.Web.Providers;
 
 namespace Common.Web.Services
 {
+    /// <summary>
+    /// BulkMediaUploadService is the main service that bulk upload process of images from the web 
+    /// </summary>
     public class BulkMediaUploadService : IBulkMediaUploadService
     {
         private readonly ICsvMediaProvider _csvMediaProvider;
@@ -23,7 +21,7 @@ namespace Common.Web.Services
         public bool Upload(string itemPath, string csvFilePath)
         {
             bool result = false;
-            var csvMediaList = _csvMediaProvider.GetMediaList(csvFilePath);
+            var csvMediaList = _csvMediaProvider.ParseFile(csvFilePath);
             if (csvMediaList == null)
             {
                 return false;

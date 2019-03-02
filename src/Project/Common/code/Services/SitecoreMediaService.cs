@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Web;
-using Common.Web.Models;
+﻿using Common.Web.Models;
 using Sitecore.Data.Items;
 using Sitecore.Diagnostics;
 using Sitecore.SecurityModel;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace Common.Web.Services
 {
@@ -14,6 +12,12 @@ namespace Common.Web.Services
     {
         private readonly string masterDb = "master";
 
+        /// <summary>
+        /// Save Media items in the Media Library
+        /// </summary>
+        /// <param name="itemPath"></param>
+        /// <param name="mediaList"></param>
+        /// <returns></returns>
         public bool Upload(string itemPath, List<IMedia> mediaList)
         {
             int count = 0;
@@ -33,6 +37,14 @@ namespace Common.Web.Services
             return false;
         }
 
+        /// <summary>
+        /// Save image in the Media library
+        /// </summary>
+        /// <param name="stream"></param>
+        /// <param name="fileName"></param>
+        /// <param name="path"></param>
+        /// <param name="mediaItemName"></param>
+        /// <returns></returns>
         private bool UploadMediaItem(Stream stream, string fileName, string path, string mediaItemName)
         {
             if (string.IsNullOrWhiteSpace(fileName) || string.IsNullOrWhiteSpace(path) || string.IsNullOrWhiteSpace(mediaItemName))

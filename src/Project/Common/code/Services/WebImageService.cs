@@ -1,24 +1,18 @@
-﻿using Common.Web.Models;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Web;
 
 namespace Common.Web.Services
 {
-    public class WebImageService : IImageService, IDisposable
+    public class WebImageService : IImageService
     {
-        Stream _webStream = Stream.Null;
-
-        public void Dispose()
-        {
-            _webStream.Dispose();
-        }
-
         public Func<WebClient> WebImageRequest = () => { return new WebClient(); };
 
+        /// <summary>
+        /// Get Image Stream from the web
+        /// </summary>
+        /// <param name="path"></param>
+        /// <returns></returns>
         public Stream GetImage(string path)
         {
             Stream media = Stream.Null;

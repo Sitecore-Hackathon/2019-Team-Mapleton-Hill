@@ -1,12 +1,5 @@
-﻿using Common.Web.Models;
-using Common.Web.Providers;
+﻿using Common.Web.Providers;
 using Common.Web.Services;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Common.Web.Tests.Services
@@ -19,7 +12,7 @@ namespace Common.Web.Tests.Services
             string csvPath = "C:\\HackathonTemp\\images.csv";
             string itemPath = "/sitecore/media library/Images";
 
-            BulkMediaUploadService uploadSvc = new BulkMediaUploadService(new CsvMediaProvider(), new BulkMediaProviderBase(), new SitecoreMediaService());
+            BulkMediaUploadService uploadSvc = new BulkMediaUploadService(new CsvMediaProvider(), new BulkMediaProvider(), new SitecoreMediaService());
 
             bool result =  uploadSvc.Upload(itemPath, csvPath);
             
