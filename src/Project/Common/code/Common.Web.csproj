@@ -83,6 +83,7 @@
     <Reference Include="Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage, Version=6.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.6.0.1304.0\lib\NET45\Microsoft.Practices.EnterpriseLibrary.TransientFaultHandling.WindowsAzure.Storage.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Mvp.Xml, Version=2.3.0.0, Culture=neutral, PublicKeyToken=6ead800d778c9b9f, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Mvp.Xml.2.3.0\lib\net20\Mvp.Xml.dll</HintPath>
     </Reference>
@@ -143,15 +144,20 @@
   <ItemGroup>
     <Compile Include="Commandlets\GetImageData.cs" />
     <Compile Include="Factories\MediaFactory.cs" />
+    <Compile Include="Models\CsvMedia.cs" />
+    <Compile Include="Models\ICsvMedia.cs" />
     <Compile Include="Models\IMedia.cs" />
     <Compile Include="Models\NullMedia.cs" />
     <Compile Include="Models\SimpleMedia.cs" />
     <Compile Include="Models\ResourceType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\BulkMediaProviderBase.cs" />
-    <Compile Include="Providers\CvsMediaProvider.cs" />
-    <Compile Include="Providers\ICvsMediaProvider.cs" />
+    <Compile Include="Providers\CsvMediaProvider.cs" />
+    <Compile Include="Providers\IBulkMediaProvider.cs" />
+    <Compile Include="Providers\ICsvMediaProvider.cs" />
+    <Compile Include="Services\BulkMediaUploadService.cs" />
     <Compile Include="Services\FileImageService.cs" />
+    <Compile Include="Services\IBuilkMediaUploadService.cs" />
     <Compile Include="Services\ISitecoreMediaService.cs" />
     <Compile Include="Services\IImageService.cs" />
     <Compile Include="Services\SitecoreMediaService.cs" />

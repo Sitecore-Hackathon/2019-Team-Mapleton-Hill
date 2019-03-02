@@ -9,6 +9,7 @@ namespace Common.Web.Models
     public class NullMedia : IMedia
     {
         public string Name { get => string.Empty; set { } }
+        public string FileName { get => string.Empty; set { } }
         public Stream Image { get => Stream.Null; set { } }
     }
 }
