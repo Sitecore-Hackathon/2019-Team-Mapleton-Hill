@@ -7,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Common.Web.Services
 {
-    public interface IWebImageService
+    public interface IImageService
     {
-        string Download(string imageUrl, string directoryDownload);
-        Stream Download(string imageUrl);
+        Stream GetImage(string path);
     }
 }
