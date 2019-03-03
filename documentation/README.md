@@ -1,24 +1,15 @@
-# Documentation
-
-The documentation for this years Hackathon must be provided as a readme in Markdown format as part of your submission. 
-
-You can find a very good reference to Github flavoured markdown reference in [this cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet). If you want something a bit more WYSIWYG for editing then could use [StackEdit](https://stackedit.io/app) which provides a more user friendly interface for generating the Markdown code. Those of you who are [VS Code fans](https://code.visualstudio.com/docs/languages/markdown#_markdown-preview) can edit/preview directly in that interface too.
-
-Examples of things to include are the following.
+# Web Images Bulk Migration with a CSV file 
 
 ## Summary
 
-**Category:** Hackathon Category
+**Category:** Best use of SPE to help Content authors and Marketers.
 
-What is the purpose of your module? What problem does it solve and how does it do that?
+Content authors and marketers won’t have worry about manually uploading images that already have in another web site (like Wordpress) that they are migrating to Sitecore or to import images from sites like Unplash. They only need to provide media items detail containing web addresses, and item names in form of CSV file and rest of all will be managed by this module.
+
 
 ## Pre-requisites
 
-Does your module rely on other Sitecore modules or frameworks?
-
-- List any dependencies
-- Or other modules that must be installed
-- Or services that must be enabled/configured
+This module is dependent on Sitecore Powershell Extensions, so please make sure that you have Powershell extensions installed in your Sitecore instance.
 
 ## Installation
 
@@ -50,22 +41,23 @@ Remember you are using Markdown, you can provide code samples too:
 
 ## Usage
 
-Provide documentation  about your module, how do the users use your module, where are things located, what do icons mean, are there any secret shortcuts etc.
+1.	Right click the item where the media items will be added and select Scripts > Bulk Image Package Upload.
+![Menu](documentation/images/image1.png?raw=true "Menu")
 
-Please include screenshots where necessary. You can add images to the `./images` folder and then link to them from your documentation:
+2.	 You will get a Bulk Image Upload window. Provide a valid CSV file with the expected format.
+![File Dialog](documentation/images/image2.png?raw=true "File Dialog")
 
-![Hackathon Logo](images/hackathon.png?raw=true "Hackathon Logo")
+3.	 Click Upload. 
 
-You can embed images of different formats too:
+4.	When the process finishes you will get the following message. Click Close.
+![Done Msg](documentation/images/image3.png?raw=true "Done Msg")
 
-![Deal With It](images/deal-with-it.gif?raw=true "Deal With It")
+5. You will see the media items added in the selected path. 
+![Media Library](documentation/images/lastImage.png?raw=true "Media Library")
 
-And you can embed external images too:
-
-![Random](https://placeimg.com/480/240/any "Random")
+Your CSV file must have the following format.  
+![File Format](documentation/images/fileFormat.png?raw=true "File Format")
 
 ## Video
 
-Please provide a video highlighing your Hackathon module submission and provide a link to the video. Either a [direct link](https://www.youtube.com/watch?v=EpNhxW4pNKk) to the video, upload it to this documentation folder or maybe upload it to Youtube...
-
-[![Sitecore Hackathon Video Embedding Alt Text](https://img.youtube.com/vi/EpNhxW4pNKk/0.jpg)](https://www.youtube.com/watch?v=EpNhxW4pNKk)
+[![Sitecore Hackathon Mapleton Hill Video](https://img.youtube.com/vi/Hg7SU907kiI/0.jpg)](https://www.youtube.com/watch?v=Hg7SU907kiI)
