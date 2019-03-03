@@ -15,9 +15,8 @@ This module is dependent on Sitecore Powershell Extensions, so please make sure 
 
 Provide detailed instructions on how to install the module, and include screenshots where necessary.
 
-1. Use the Sitecore Installation wizard to install the [package](#link-to-package)
-2. ???
-3. Profit
+1. Upload the BulkImageUpload-Module Sitecore package through the Installation Wizard.
+2. Install the package
 
 ## Configuration
 
